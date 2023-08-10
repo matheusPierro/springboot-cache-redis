@@ -1,5 +1,6 @@
 package br.com.matheuspierro.ecommercecache;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +33,7 @@ public class ECommerceCacheApplication {
 	}
 }
 
-record Product(Long id, String nome, String description) {
+record Product(Long id, String nome, String description) implements Serializable {
 }
 
 @Service
