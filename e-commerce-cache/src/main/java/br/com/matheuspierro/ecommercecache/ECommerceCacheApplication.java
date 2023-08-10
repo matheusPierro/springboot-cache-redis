@@ -6,10 +6,13 @@ import java.util.Map;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @SpringBootApplication
+@EnableCaching
 public class ECommerceCacheApplication {
 
 	public static void main(String[] args) {
@@ -45,6 +48,7 @@ class ProductService {
 		}
 	};
 
+	@Cacheable("products")
 	Product getById(Long id) {
 		System.out.println("Buscando produtos...");
 		simulateLatency();
