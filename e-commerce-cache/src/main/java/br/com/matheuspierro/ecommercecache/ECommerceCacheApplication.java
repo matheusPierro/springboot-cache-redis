@@ -51,7 +51,7 @@ class ProductService {
 
 	@Cacheable("products")
 	Product getById(Long id) {
-		System.out.println("Buscando produtos...");
+		System.out.println("Looking for products...");
 		simulateLatency();
 		return products.get(id);
 	}
