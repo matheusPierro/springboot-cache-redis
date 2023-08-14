@@ -1,6 +1,7 @@
 package br.com.matheuspierro.automatedtests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class UserServiceTest {
     private UserService userService = new UserService();
 
     @Test
-    public void createUser() {
+    public void createUser_ReturnsUsers() {
         // AAA
         // Arrange
         User user = new User("matheusPierro", "teste123");
@@ -19,8 +20,17 @@ public class UserServiceTest {
         List<User> users = userService.create(user);
 
         // Assert
-        assertEquals(2, users.size());
+        assertEquals(1, users.size());
         assertEquals(user, users.get(0));
 
+    }
+
+    @Test
+    public void createUser_ThrowsException() {
+        User user = new User("matheusPierro", "teste123");
+        userService.create(user);
+
+        assertThrows(Exception.class,
+                () -> userService.create(user));
     }
 }
