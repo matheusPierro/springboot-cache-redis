@@ -13,3 +13,16 @@ public class ECommerceSecurityApplication {
 	}
 
 }
+
+@RestController
+class HttpController {
+	@GetMapping("/public")
+	String publicRoute() {
+		return "<h1>Public route, feel free to look around! 🔓 </h1>";
+	}
+
+	@GetMapping("/private")
+	String privateRoute() {
+		return "<h1>Private route, only authorized personal! 🔐  </h1>";
+	}
+}
